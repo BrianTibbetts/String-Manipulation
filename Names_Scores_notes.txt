@@ -1,0 +1,42 @@
+Managing the String and Integer Data
+-The file is formatted as comma-separated tokens, and the names are in all capital letters and in quotation marks.
+-The quotes don't need to be removed as they can be counted as 0 during scoring.
+-ASCII codes are already in alphabetic order. Subtract 64 from a character code to get its score.
+	
+Sorting the names alphabetically
+-Apply a sorting algorithm I am familiar with using, but for strings instead of numeric values.
+-Use strncmp() to compare the strings alphabetically.
+
+Finding the Sum
+-A nested for loop is the clearest solution for this. Sum the character score of each character in a name, then multiply by the current index + 1 to find the score.
+
+Implementing a sorting algorithm: Quicksort
+-Quicksort sorts an array of strings using recursion and a helper function partition() which splits an array into two partitions and sorts each partition.
+-Use the partitioning steps described here: https://en.wikipedia.org/wiki/Quicksort#Lomuto_partition_scheme
+-An example quicksort run with the first 4 names:
+
+    Names = ["MARY","PATRICIA","LINDA","BARBARA"]
+    quicksort(0, 3):
+        partition(0, 3):
+            pivotitem = Names[3], splitindex = -1
+            items swapped in for(0 to 2):
+                None
+            swap(Names[0], Names[3]): Names = ["BARBARA","PATRICIA","LINDA","MARY"]
+            return 0
+        quicksort(0, -1)
+        quicksort(1, 3)
+
+    quicksort(0, -1): Base case low >= high
+
+    quicksort(1, 3):
+        partition(1, 3):
+            pivotitem = Names[3], splitindex = 0
+            items swapped in for(1 to 2):
+                swap(Names[1], Names[2]): Names = ["BARBARA","LINDA","PATRICIA","MARY"]
+            swap(Names[2], Names[3]): Names = ["BARBARA","LINDA","MARY","PATRICIA"]
+            return 2
+        quicksort(1, 1)
+        quicksort(3, 3)
+
+    quicksort(1, 1): Base case low >= high
+    quicksort(3, 3): Base case low >= high
